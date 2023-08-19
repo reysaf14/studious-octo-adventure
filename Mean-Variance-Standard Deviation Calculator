@@ -1,0 +1,30 @@
+import numpy as np
+
+def calculate(arr):
+    if len(arr) < 9:
+        raise ValueError("List must contain nine numbers.")
+
+    # Mengonversi list ke matriks 3x3
+    matrix = np.array(arr).reshape(3, 3)
+
+    # Menghitung statistik
+    calculations = {
+        'mean': [np.mean(matrix, axis=0).tolist(), np.mean(matrix, axis=1).tolist(), np.mean(matrix).tolist()],
+        'variance': [np.var(matrix, axis=0).tolist(), np.var(matrix, axis=1).tolist(), np.var(matrix).tolist()],
+        'standard deviation': [np.std(matrix, axis=0).tolist(), np.std(matrix, axis=1).tolist(), np.std(matrix).tolist()],
+        'max': [np.max(matrix, axis=0).tolist(), np.max(matrix, axis=1).tolist(), np.max(matrix).tolist()],
+        'min': [np.min(matrix, axis=0).tolist(), np.min(matrix, axis=1).tolist(), np.min(matrix).tolist()],
+        'sum': [np.sum(matrix, axis=0).tolist(), np.sum(matrix, axis=1).tolist(), np.sum(matrix).tolist()]
+    }
+
+    return calculations
+
+# Contoh penggunaan fungsi calculate
+if __name__ == "__main__":
+    arr = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+    result = calculate(arr)
+    print(result)
+Dalam kode di atas, fungsi calculate() mengambil sebuah list dengan 9 angka dan mengonversinya menjadi matriks 3x3, kemudian menghitung statistik yang diinginkan di sepanjang sumbu 0 (kolom), sumbu 1 (baris), dan secara keseluruhan (flatten). 
+Hasilnya disimpan dalam sebuah dictionary dan dikembalikan. Contoh penggunaan fungsi calculate() juga disediakan di bagian akhir kode. Pastikan Anda mengganti arr dengan list yang sesuai dengan data Anda.
+
+# Contoh penggunaan, calculate([0,1,2,3,4,5,6,7,8])
